@@ -39,6 +39,13 @@ else if ($_POST != NULL) {
 	$query = 'SELECT id FROM order_archive WHERE id = LAST_INSERT_ID()';
 	$id_order = mysqli_fetch_assoc(mysqli_query($db, $query));
 	for ($i=0; $i < $nb_product; $i++) {
+		// delete products from database
+		$query = 'SELECT quantity FROM product WHERE name="'.$_SESSION['basket']['name'][$i].'"';
+		$quantity = mysqli_fetch_assoc(mysqli_query($db, $query));
+		$quantity =  $quantity['quantity'] - $_SESSION['basket']['nb'][$i];
+		$query = 'UPDATE product SET quantity='.$quantity.' WHERE name="'.$_SESSION['basket']['name'][$i].'"';
+		mysqli_query($db, $query);
+
 		$query = 'SELECT id FROM product WHERE name="'.$_SESSION['basket']['name'][$i].'"';
 		$id_product = mysqli_fetch_assoc(mysqli_query($db, $query));
 		$query = 'INSERT INTO order_product VALUES (NULL, '.$id_order['id'].','.$id_product['id'].','.$_SESSION['basket']['nb'][$i].')';

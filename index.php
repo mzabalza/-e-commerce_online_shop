@@ -4,16 +4,12 @@ include 'db_connect.php';
 include 'templates/t_header.php';
 include 'templates/t_menu.php';
 
-
-echo($_POST['category']);
-
-
 function display_product($db) {
-	if ($_POST != NULL)
-		$category = $_POST['category'];
+	if ($_GET != NULL)
+		$category = $_GET['category'];
 	else
 		$category = 'all';
-	$query = 'SELECT id FROM `category` WHERE name = "'.$category.'"';
+	$query = 'SELECT id FROM `category` WHERE name = "' . $category .'"';
 	$id = mysqli_query($db, $query);
 	$array = mysqli_fetch_assoc($id);
 	$id = $array['id'];

@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.1
+-- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
--- Hôte : localhost:3306
--- Généré le :  Dim 03 juin 2018 à 13:04
--- Version du serveur :  5.7.22
--- Version de PHP :  7.0.30
+-- Host: localhost:3306
+-- Generation Time: Jan 13, 2019 at 12:11 PM
+-- Server version: 5.7.24
+-- PHP Version: 7.1.25
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,13 +19,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données :  `42music`
+-- Database: `42music`
 --
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `category`
+-- Table structure for table `category`
 --
 
 CREATE TABLE `category` (
@@ -34,7 +34,7 @@ CREATE TABLE `category` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Déchargement des données de la table `category`
+-- Dumping data for table `category`
 --
 
 INSERT INTO `category` (`id`, `name`) VALUES
@@ -49,7 +49,7 @@ INSERT INTO `category` (`id`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `category_product`
+-- Table structure for table `category_product`
 --
 
 CREATE TABLE `category_product` (
@@ -59,7 +59,7 @@ CREATE TABLE `category_product` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Déchargement des données de la table `category_product`
+-- Dumping data for table `category_product`
 --
 
 INSERT INTO `category_product` (`id`, `ID_category`, `ID_product`) VALUES
@@ -77,12 +77,16 @@ INSERT INTO `category_product` (`id`, `ID_category`, `ID_product`) VALUES
 (12, 1, 6),
 (13, 2, 6),
 (14, 1, 7),
-(15, 4, 7);
+(15, 4, 7),
+(16, 1, 8),
+(17, 1, 9),
+(18, 1, 10),
+(19, 8, 10);
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `order_archive`
+-- Table structure for table `order_archive`
 --
 
 CREATE TABLE `order_archive` (
@@ -91,18 +95,10 @@ CREATE TABLE `order_archive` (
   `price` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Déchargement des données de la table `order_archive`
---
-
-INSERT INTO `order_archive` (`id`, `ID_user`, `price`) VALUES
-(1, 3, 10400),
-(2, 2, 5018000);
-
 -- --------------------------------------------------------
 
 --
--- Structure de la table `order_product`
+-- Table structure for table `order_product`
 --
 
 CREATE TABLE `order_product` (
@@ -112,46 +108,37 @@ CREATE TABLE `order_product` (
   `amount` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Déchargement des données de la table `order_product`
---
-
-INSERT INTO `order_product` (`id`, `ID_order`, `ID_product`, `amount`) VALUES
-(1, 1, 1, 1),
-(2, 1, 2, 1),
-(3, 2, 4, 1),
-(4, 2, 6, 1);
-
 -- --------------------------------------------------------
 
 --
--- Structure de la table `product`
+-- Table structure for table `product`
 --
 
 CREATE TABLE `product` (
   `id` int(11) NOT NULL,
   `name` text NOT NULL,
   `price` float NOT NULL,
-  `img` varchar(255) DEFAULT NULL
+  `img` varchar(255) DEFAULT NULL,
+  `quantity` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Déchargement des données de la table `product`
+-- Dumping data for table `product`
 --
 
-INSERT INTO `product` (`id`, `name`, `price`, `img`) VALUES
-(1, 'Alesis Recital Pro', 400, 'http://www.rock.ma/10077-thickbox_default/alesis-recital-pro.jpg'),
-(2, 'Yamaha YCL-650II', 10000, 'https://www.woodbrass.com/images/SQUARE400/woodbrass/YAMAHA+YCL650II.JPG'),
-(3, 'Fender Stratocaster', 1000, 'https://d1aeri3ty3izns.cloudfront.net/media/26/269364/1200/preview.jpg'),
-(4, 'Ludwig', 5000000, 'https://media.musiciansfriend.com/is/image/MMGS7/Junior-Outfit-Drum-Set-Blue/447702000004000-00-500x500.jpg'),
-(5, 'Basswood', 200, 'https://cdn.shopify.com/s/files/1/1710/1447/products/Violin9.jpeg?v=1521557750'),
-(6, 'Roland Grand Piano', 18000, 'https://d1aeri3ty3izns.cloudfront.net/media/12/120144/1200/preview.jpg'),
-(7, 'Yamaha Y40', 150, 'https://media.cultura.com/media/catalog/product/cache/1/image/1000x1000/9df78eab33525d08d6e5fb8d27136e95/c/l/clavier-arrangeur-61-touches-385-sonorites-100-styles-usb-to-host-4957812527354_0.jpg?t=1509500344');
+INSERT INTO `product` (`id`, `name`, `price`, `img`, `quantity`) VALUES
+(1, 'Alesis Recital Pro', 400, 'http://www.rock.ma/10077-thickbox_default/alesis-recital-pro.jpg', 20),
+(2, 'Yamaha YCL-650II', 300, 'https://www.woodbrass.com/images/SQUARE400/woodbrass/YAMAHA+YCL650II.JPG', 20),
+(3, 'Fender Stratocaster', 1000, 'https://d1aeri3ty3izns.cloudfront.net/media/26/269364/1200/preview.jpg', 20),
+(4, 'Ludwig', 5000000, 'https://media.musiciansfriend.com/is/image/MMGS7/Junior-Outfit-Drum-Set-Blue/447702000004000-00-500x500.jpg', 20),
+(5, 'Basswood', 200, 'https://cdn.shopify.com/s/files/1/1710/1447/products/Violin9.jpeg?v=1521557750', 20),
+(6, 'Roland Grand Piano', 18000, 'https://d1aeri3ty3izns.cloudfront.net/media/12/120144/1200/preview.jpg', 20),
+(7, 'Yamaha Y40', 150, 'https://media.cultura.com/media/catalog/product/cache/1/image/1000x1000/9df78eab33525d08d6e5fb8d27136e95/c/l/clavier-arrangeur-61-touches-385-sonorites-100-styles-usb-to-host-4957812527354_0.jpg?t=1509500344', 20);
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `user`
+-- Table structure for table `user`
 --
 
 CREATE TABLE `user` (
@@ -167,93 +154,92 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Déchargement des données de la table `user`
+-- Dumping data for table `user`
 --
 
 INSERT INTO `user` (`id`, `admin`, `email`, `passwd`, `name`, `first_name`, `adress`, `zip`, `city`) VALUES
-(1, 1, 'samuel.vigouroux.o@gmail.com', 'b913d5bbb8e461c2c5961cbe0edcdadfd29f068225ceb37da6defcf89849368f8c6c2eb6a4c4ac75775d032a0ecfdfe8550573062b653fe92fc7b8fb3b7be8d6', 'Vigouroux-Obadia', 'Samuel', '3 rue Berzelius', 75017, 'Paris'),
-(2, 0, 'test@test.com', 'b913d5bbb8e461c2c5961cbe0edcdadfd29f068225ceb37da6defcf89849368f8c6c2eb6a4c4ac75775d032a0ecfdfe8550573062b653fe92fc7b8fb3b7be8d6', 'test', 'test', 'test', 0, 'test'),
-(3, 0, 'random@random.com', 'b913d5bbb8e461c2c5961cbe0edcdadfd29f068225ceb37da6defcf89849368f8c6c2eb6a4c4ac75775d032a0ecfdfe8550573062b653fe92fc7b8fb3b7be8d6', 'random', 'random', 'random', 66666, 'random');
+(4, 1, 'tom@gmail.com', '0cb62d201b3e9761ebb2f20b11627011a09539d5fc65dc98d2bd24d3c71fec3e27ad475091d107a14660cd3982f5609e756e08ad3ac2282bfae0903095e24bbe', '1', '1', '1', 1, '1'),
+(5, 1, 'mikel@gmail.com', '2f9959b230a44678dd2dc29f037ba1159f233aa9ab183ce3a0678eaae002e5aa6f27f47144a1a4365116d3db1b58ec47896623b92d85cb2f191705daf11858b8', '1', '1', '1', 1, '1');
 
 --
--- Index pour les tables déchargées
+-- Indexes for dumped tables
 --
 
 --
--- Index pour la table `category`
+-- Indexes for table `category`
 --
 ALTER TABLE `category`
   ADD PRIMARY KEY (`id`);
 
 --
--- Index pour la table `category_product`
+-- Indexes for table `category_product`
 --
 ALTER TABLE `category_product`
   ADD PRIMARY KEY (`id`);
 
 --
--- Index pour la table `order_archive`
+-- Indexes for table `order_archive`
 --
 ALTER TABLE `order_archive`
   ADD PRIMARY KEY (`id`);
 
 --
--- Index pour la table `order_product`
+-- Indexes for table `order_product`
 --
 ALTER TABLE `order_product`
   ADD PRIMARY KEY (`id`);
 
 --
--- Index pour la table `product`
+-- Indexes for table `product`
 --
 ALTER TABLE `product`
   ADD PRIMARY KEY (`id`);
 
 --
--- Index pour la table `user`
+-- Indexes for table `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT pour les tables déchargées
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT pour la table `category`
+-- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- AUTO_INCREMENT pour la table `category_product`
+-- AUTO_INCREMENT for table `category_product`
 --
 ALTER TABLE `category_product`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
--- AUTO_INCREMENT pour la table `order_archive`
+-- AUTO_INCREMENT for table `order_archive`
 --
 ALTER TABLE `order_archive`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT pour la table `order_product`
---
-ALTER TABLE `order_product`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
--- AUTO_INCREMENT pour la table `product`
---
-ALTER TABLE `product`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
---
--- AUTO_INCREMENT pour la table `user`
---
-ALTER TABLE `user`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `order_product`
+--
+ALTER TABLE `order_product`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `product`
+--
+ALTER TABLE `product`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT for table `user`
+--
+ALTER TABLE `user`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

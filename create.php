@@ -28,7 +28,7 @@ if ($_POST != NULL) {
 		$count = mysqli_query($db, $query);
 		$test = mysqli_fetch_assoc($count);
 		if ($test['COUNT(*)']) {
-			header('Location: /rush00/index.php'); //??????
+			header('Location: index.php');
 			$_SESSION['logged_user'] = $login;
 			$query = 'SELECT name FROM user WHERE email = "'.$login.'"';
 			$name = mysqli_fetch_assoc(mysqli_query($db, $query));

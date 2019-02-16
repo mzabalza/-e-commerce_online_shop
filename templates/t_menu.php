@@ -1,15 +1,16 @@
+
 <html>
 <body>
 	<div class="lower-header">
 		<div class="selector">
-			<form action="" method="post" class=selector>
+			<form action="index.php" method="get" class=selector>
 				<div class="dropdown">
 					<select name="category" class="dropdown-select" >
 						<?php
 						$query = 'SELECT name FROM category';
 						$category = mysqli_query($db, $query);
 						while ($array = mysqli_fetch_assoc($category)) {
-							if ($array['name'] == 'all') //dont get it
+							if ($array['name'] == $_GET['category'])
 								echo '<option selected="selected" value="'.$array['name'].'">'.$array['name'].'</option>';
 							else
 								echo '<option value="'.$array['name'].'">'.$array['name'].'</option>';

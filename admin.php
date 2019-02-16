@@ -2,7 +2,7 @@
 
 include 'db_connect.php';
 include 'templates/t_header.php';
-include 'templates/t_menu.php';
+include 'templates/t_menu2.php';
 include 'templates/t_admin.php';
 
 function modif_user($id, $key, $value, $db) {
@@ -125,7 +125,7 @@ if ($_POST != NULL) {
 						if ($array['name'] == $_POST['name'])
 							die("This product already exist.");
 					}
-					$query = 'INSERT INTO product VALUES (NULL, "'.$_POST['name'].'","'.$_POST['price'].'","'.$_POST['img'].'")';
+					$query = 'INSERT INTO product VALUES (NULL, "'.$_POST['name'].'","'.$_POST['price'].'","'.$_POST['img'].'", 20)';
 					mysqli_query($db, $query);
 					$query = 'SELECT id FROM product WHERE id = LAST_INSERT_ID()';
 					$id_product = mysqli_fetch_assoc(mysqli_query($db, $query));

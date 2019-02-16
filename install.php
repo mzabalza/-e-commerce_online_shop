@@ -1,7 +1,7 @@
 <?php
 
 // Connect to mysql
-if ($db = mysqli_connect('localhost', 'root', 'shirakawa252mmE'))
+if ($db = mysqli_connect('localhost', 'root', 'toardoui'))
 	echo 'Connection to mysql successfull<br>';
 else
 	die('Failed to connect to db: ' . mysqli_connect_error() . '<br>');
